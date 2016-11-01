@@ -28,6 +28,7 @@ packages=("github.com/digitalrebar/digitalrebar/go/certificates/sign-it"
 	  "github.com/digitalrebar/digitalrebar/go/rule-engine"
 	  "github.com/digitalrebar/digitalrebar/go/rebar-rev-proxy"
 	  "github.com/digitalrebar/digitalrebar/go/rebar-api/rebar"
+	  "github.com/digitalrebar/digitalrebar/go/rebar-core-api/cmd/rebar-core-server"
 	  "github.com/digitalrebar/digitalrebar/go/forwarder"
 	  "github.com/digitalrebar/digitalrebar/go/provisioner-mgmt")
 declare -A oses
