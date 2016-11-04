@@ -14,7 +14,6 @@ import (
 	security "github.com/go-openapi/runtime/security"
 	spec "github.com/go-openapi/spec"
 	strfmt "github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/digitalrebar/digitalrebar/go/rebar-core-api/restapi/operations/attribs"
 	"github.com/digitalrebar/digitalrebar/go/rebar-core-api/restapi/operations/availablehammers"

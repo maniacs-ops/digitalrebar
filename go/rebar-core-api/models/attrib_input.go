@@ -90,11 +90,9 @@ func (m *AttribInput) validateValue(formats strfmt.Registry) error {
 		return nil
 	}
 
-	/*
-		if err := m.Value.Validate(formats); err != nil {
-			return err
-		}
-	*/
+	if err := m.Value.Validate(formats); err != nil {
+		return err
+	}
 
 	return nil
 }

@@ -35,6 +35,9 @@ type RolesInput struct {
 	// conflicts
 	Conflicts []string `json:"conflicts,omitempty"`
 
+	// created at
+	CreatedAt string `json:"created_at,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 
@@ -46,6 +49,9 @@ type RolesInput struct {
 
 	// icon
 	Icon string `json:"icon,omitempty"`
+
+	// id
+	ID int64 `json:"id,omitempty"`
 
 	// implicit
 	Implicit bool `json:"implicit,omitempty"`
@@ -85,6 +91,12 @@ type RolesInput struct {
 
 	// service
 	Service bool `json:"service,omitempty"`
+
+	// updated at
+	UpdatedAt string `json:"updated_at,omitempty"`
+
+	// uuid
+	UUID string `json:"uuid,omitempty"`
 
 	// wanted attribs
 	WantedAttribs []string `json:"wanted_attribs,omitempty"`

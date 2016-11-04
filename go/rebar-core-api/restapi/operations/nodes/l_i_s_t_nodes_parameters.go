@@ -7,7 +7,6 @@ import (
 	"net/http"
 
 	"github.com/go-openapi/errors"
-	"github.com/go-openapi/runtime/middleware"
 )
 
 // NewLISTNodesParams creates a new LISTNodesParams object

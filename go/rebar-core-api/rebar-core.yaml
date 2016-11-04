@@ -1,0 +1,3975 @@
+swagger: '2.0'
+info:
+  version: '1'
+  title: Rebar Core
+  description: Digital Rebar Core API
+basePath: /api/v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Authorization:
+    name: Authorization
+    type: apiKey
+    in: header
+  auth_token:
+    name: auth_token
+    type: apiKey
+    in: query
+paths:
+  '/users/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-user
+      summary: Get User
+      tags:
+        - Users
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/user-output'
+    put:
+      operationId: PUT-user
+      summary: Update User
+      tags:
+        - Users
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/user-input'
+            example:
+              id: 3
+              uuid: fc16ab26-09d8-40c2-beb0-b9349d9728a2
+              username: machine-install
+              email: root@localhost.localdomain
+              is_admin: false
+              tenant_id: 1
+              current_tenant_id: 1
+              locked: false
+              created_at: '2016-10-25T22:04:45.622Z'
+              updated_at: '2016-10-25T22:04:45.691Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/user-output'
+    delete:
+      operationId: DELETE-user
+      summary: Delete User
+      tags:
+        - Users
+      responses:
+        '204':
+          description: ''
+  /users:
+    get:
+      operationId: LIST-users
+      summary: List Users
+      tags:
+        - Users
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/user-output'
+    post:
+      operationId: POST-user
+      summary: Create User
+      tags:
+        - Users
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/user-input'
+            example:
+              id: 3
+              uuid: fc16ab26-09d8-40c2-beb0-b9349d9728a2
+              username: machine-install
+              email: root@localhost.localdomain
+              is_admin: false
+              tenant_id: 1
+              current_tenant_id: 1
+              locked: false
+              created_at: '2016-10-25T22:04:45.622Z'
+              updated_at: '2016-10-25T22:04:45.691Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/user-output'
+  '/usertenantcapabilities/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-usertenantcapability
+      summary: Get UserTenantCapability
+      tags:
+        - Usertenantcapabilities
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/usertenantcapability-output'
+    put:
+      operationId: PUT-usertenantcapability
+      summary: Update UserTenantCapability
+      tags:
+        - Usertenantcapabilities
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/usertenantcapability-input'
+            example:
+              id: 3
+              uuid: 8189551a-f5bb-495a-8cfe-ab49fec8e0cc
+              user_id: 3
+              tenant_id: 1
+              capability_id: 3
+              created_at: '2016-10-25T22:04:48.061Z'
+              updated_at: '2016-10-25T22:04:48.061Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/usertenantcapability-output'
+    delete:
+      operationId: DELETE-usertenantcapability
+      summary: Delete UserTenantCapability
+      tags:
+        - Usertenantcapabilities
+      responses:
+        '204':
+          description: ''
+  /usertenantcapabilities:
+    get:
+      operationId: LIST-usertenantcapabilities
+      summary: List Usertenantcapabilities
+      tags:
+        - Usertenantcapabilities
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/usertenantcapability-output'
+    post:
+      operationId: POST-usertenantcapability
+      summary: Create UserTenantCapability
+      tags:
+        - Usertenantcapabilities
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/usertenantcapability-input'
+            example:
+              id: 3
+              uuid: 8189551a-f5bb-495a-8cfe-ab49fec8e0cc
+              user_id: 3
+              tenant_id: 1
+              capability_id: 3
+              created_at: '2016-10-25T22:04:48.061Z'
+              updated_at: '2016-10-25T22:04:48.061Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/usertenantcapability-output'
+  '/tenants/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-tenant
+      summary: Get Tenant
+      tags:
+        - Tenants
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/tenant-output'
+    put:
+      operationId: PUT-tenant
+      summary: Update Tenant
+      tags:
+        - Tenants
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/tenant-input'
+            example:
+              id: 1
+              uuid: 0e58fce1-ae25-4a43-ae94-f6d36b328614
+              name: system
+              description: Global System Tenant
+              parent_id: 0
+              created_at: '2016-10-25T22:04:07.347Z'
+              updated_at: '2016-10-25T22:04:07.347Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/tenant-output'
+    delete:
+      operationId: DELETE-tenant
+      summary: Delete Tenant
+      tags:
+        - Tenants
+      responses:
+        '204':
+          description: ''
+  /tenants:
+    get:
+      operationId: LIST-tenants
+      summary: List Tenants
+      tags:
+        - Tenants
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/tenant-output'
+    post:
+      operationId: POST-tenant
+      summary: Create Tenant
+      tags:
+        - Tenants
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/tenant-input'
+            example:
+              id: 1
+              uuid: 0e58fce1-ae25-4a43-ae94-f6d36b328614
+              name: system
+              description: Global System Tenant
+              parent_id: 0
+              created_at: '2016-10-25T22:04:07.347Z'
+              updated_at: '2016-10-25T22:04:07.347Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/tenant-output'
+  '/providers/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-provider
+      summary: Get Provider
+      tags:
+        - Providers
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/provider-output'
+    put:
+      operationId: PUT-provider
+      summary: Update Provider
+      tags:
+        - Providers
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/provider-input'
+            example:
+              id: 1
+              uuid: 9f901155-d535-4c8d-9217-156384cbad1f
+              name: metal
+              description: Provide basic node services for bare-metal nodes.
+              auth_details: {}
+              type: MetalProvider
+              tenant_id: 1
+              created_at: '2016-10-25T22:05:02.302Z'
+              updated_at: '2016-10-25T22:05:02.302Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/provider-output'
+    delete:
+      operationId: DELETE-provider
+      summary: Delete Provider
+      tags:
+        - Providers
+      responses:
+        '204':
+          description: ''
+  /providers:
+    get:
+      operationId: LIST-providers
+      summary: List Providers
+      tags:
+        - Providers
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/provider-output'
+    post:
+      operationId: POST-provider
+      summary: Create Provider
+      tags:
+        - Providers
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/provider-input'
+            example:
+              id: 1
+              uuid: 9f901155-d535-4c8d-9217-156384cbad1f
+              name: metal
+              description: Provide basic node services for bare-metal nodes.
+              auth_details: {}
+              type: MetalProvider
+              tenant_id: 1
+              created_at: '2016-10-25T22:05:02.302Z'
+              updated_at: '2016-10-25T22:05:02.302Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/provider-output'
+  '/noderoles/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-noderole
+      summary: Get NodeRole
+      tags:
+        - Noderoles
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/noderole-output'
+    put:
+      operationId: PUT-noderole
+      summary: Update NodeRole
+      tags:
+        - Noderoles
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/noderole-input'
+            example:
+              id: 3
+              uuid: 5e74d17f-176f-4af6-997a-c1cd56f7723d
+              deployment_id: 1
+              role_id: 25
+              node_id: 1
+              state: 0
+              status: ''
+              runlog: ''
+              available: true
+              order: 10000
+              node_error: false
+              cohort: 0
+              run_count: 1
+              tenant_id: 1
+              created_at: '2016-10-25T22:05:38.582Z'
+              updated_at: '2016-10-25T22:05:53.755Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/noderole-output'
+    delete:
+      operationId: DELETE-noderole
+      summary: Delete NodeRole
+      tags:
+        - Noderoles
+      responses:
+        '204':
+          description: ''
+  /noderoles:
+    get:
+      operationId: LIST-noderoles
+      summary: List Noderoles
+      tags:
+        - Noderoles
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/noderole-output'
+    post:
+      operationId: POST-noderole
+      summary: Create NodeRole
+      tags:
+        - Noderoles
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/noderole-input'
+            example:
+              id: 3
+              uuid: 5e74d17f-176f-4af6-997a-c1cd56f7723d
+              deployment_id: 1
+              role_id: 25
+              node_id: 1
+              state: 0
+              status: ''
+              runlog: ''
+              available: true
+              order: 10000
+              node_error: false
+              cohort: 0
+              run_count: 1
+              tenant_id: 1
+              created_at: '2016-10-25T22:05:38.582Z'
+              updated_at: '2016-10-25T22:05:53.755Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/noderole-output'
+  '/networks/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-network
+      summary: Get Network
+      tags:
+        - Networks
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/network-output'
+    put:
+      operationId: PUT-network
+      summary: Update Network
+      tags:
+        - Networks
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/network-input'
+            example:
+              id: 1
+              uuid: 17d15fab-7956-44e5-97a6-69f22d63d7e8
+              name: admin-rack
+              deployment_id: 1
+              vlan: 0
+              team_mode: 5
+              use_team: false
+              use_vlan: false
+              use_bridge: false
+              configure: true
+              description: ''
+              v6prefix: 'fc45:f789:8ecd:0001'
+              conduit: dhcp
+              category: admin
+              group: rack
+              pbr: null
+              tenant_id: 1
+              created_at: '2016-10-25T22:06:29.659Z'
+              updated_at: '2016-10-25T22:06:29.659Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/network-output'
+    delete:
+      operationId: DELETE-network
+      summary: Delete Network
+      tags:
+        - Networks
+      responses:
+        '204':
+          description: ''
+  /networks:
+    get:
+      operationId: LIST-networks
+      summary: List Networks
+      tags:
+        - Networks
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/network-output'
+    post:
+      operationId: POST-network
+      summary: Create Network
+      tags:
+        - Networks
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/network-input'
+            example:
+              id: 1
+              uuid: 17d15fab-7956-44e5-97a6-69f22d63d7e8
+              name: admin-rack
+              deployment_id: 1
+              vlan: 0
+              team_mode: 5
+              use_team: false
+              use_vlan: false
+              use_bridge: false
+              configure: true
+              description: ''
+              v6prefix: 'fc45:f789:8ecd:0001'
+              conduit: dhcp
+              category: admin
+              group: rack
+              pbr: null
+              tenant_id: 1
+              created_at: '2016-10-25T22:06:29.659Z'
+              updated_at: '2016-10-25T22:06:29.659Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/network-output'
+  '/networkrouters/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-networkrouter
+      summary: Get NetworkRouter
+      tags:
+        - Networkrouters
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/networkrouter-output'
+    put:
+      operationId: PUT-networkrouter
+      summary: Update NetworkRouter
+      tags:
+        - Networkrouters
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/networkrouter-input'
+            example:
+              id: 1
+              uuid: 7f034bea-68fc-4ca5-b2b2-c57c6e5f029a
+              address: 192.168.0.2/23
+              network_id: 1
+              tenant_id: 1
+              pref: 10
+              created_at: '2016-10-25T22:06:29.738Z'
+              updated_at: '2016-10-25T22:06:29.738Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/networkrouter-output'
+    delete:
+      operationId: DELETE-networkrouter
+      summary: Delete NetworkRouter
+      tags:
+        - Networkrouters
+      responses:
+        '204':
+          description: ''
+  /networkrouters:
+    get:
+      operationId: LIST-networkrouters
+      summary: List Networkrouters
+      tags:
+        - Networkrouters
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/networkrouter-output'
+    post:
+      operationId: POST-networkrouter
+      summary: Create NetworkRouter
+      tags:
+        - Networkrouters
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/networkrouter-input'
+            example:
+              id: 1
+              uuid: 7f034bea-68fc-4ca5-b2b2-c57c6e5f029a
+              address: 192.168.0.2/23
+              network_id: 1
+              tenant_id: 1
+              pref: 10
+              created_at: '2016-10-25T22:06:29.738Z'
+              updated_at: '2016-10-25T22:06:29.738Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/networkrouter-output'
+  '/networkranges/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-networkrange
+      summary: Get NetworkRange
+      tags:
+        - Networkranges
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/networkrange-output'
+    put:
+      operationId: PUT-networkrange
+      summary: Update NetworkRange
+      tags:
+        - Networkranges
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/networkrange-input'
+            example:
+              id: 1
+              uuid: c8ec17ee-4ba9-4c94-8fb4-01008c970215
+              network_id: 1
+              vlan: 0
+              team_mode: 5
+              use_team: false
+              use_vlan: false
+              use_bridge: false
+              overlap: false
+              conduit: dhcp
+              first: 'fc45:f789:8ecd:1::1/64'
+              last: 'fc45:f789:8ecd:1:ffff:ffff:ffff:fffe/64'
+              name: host-v6
+              tenant_id: 1
+              anon_lease_time: 60
+              bound_lease_time: 2592000
+              allow_anon_leases: false
+              allow_bound_leases: false
+              created_at: '2016-10-25T22:06:29.706Z'
+              updated_at: '2016-10-25T22:06:29.706Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/networkrange-output'
+    delete:
+      operationId: DELETE-networkrange
+      summary: Delete NetworkRange
+      tags:
+        - Networkranges
+      responses:
+        '204':
+          description: ''
+  /networkranges:
+    get:
+      operationId: LIST-networkranges
+      summary: List Networkranges
+      tags:
+        - Networkranges
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/networkrange-output'
+    post:
+      operationId: POST-networkrange
+      summary: Create NetworkRange
+      tags:
+        - Networkranges
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/networkrange-input'
+            example:
+              id: 1
+              uuid: c8ec17ee-4ba9-4c94-8fb4-01008c970215
+              network_id: 1
+              vlan: 0
+              team_mode: 5
+              use_team: false
+              use_vlan: false
+              use_bridge: false
+              overlap: false
+              conduit: dhcp
+              first: 'fc45:f789:8ecd:1::1/64'
+              last: 'fc45:f789:8ecd:1:ffff:ffff:ffff:fffe/64'
+              name: host-v6
+              tenant_id: 1
+              anon_lease_time: 60
+              bound_lease_time: 2592000
+              allow_anon_leases: false
+              allow_bound_leases: false
+              created_at: '2016-10-25T22:06:29.706Z'
+              updated_at: '2016-10-25T22:06:29.706Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/networkrange-output'
+  '/networkallocations/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-networkallocation
+      summary: Get NetworkAllocation
+      tags:
+        - Networkallocations
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/networkallocation-output'
+    put:
+      operationId: PUT-networkallocation
+      summary: Update NetworkAllocation
+      tags:
+        - Networkallocations
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/networkallocation-input'
+            example:
+              id: 3
+              uuid: ae2ede5b-a3ea-496e-a024-41fdf9f36394
+              address: 192.168.1.32/23
+              node_id: 3
+              network_id: 1
+              network_range_id: 3
+              tenant_id: 1
+              created_at: '2016-10-25T22:15:28.162Z'
+              updated_at: '2016-10-25T22:15:28.162Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/networkallocation-output'
+    delete:
+      operationId: DELETE-networkallocation
+      summary: Delete NetworkAllocation
+      tags:
+        - Networkallocations
+      responses:
+        '204':
+          description: ''
+  /networkallocations:
+    get:
+      operationId: LIST-networkallocations
+      summary: List Networkallocations
+      tags:
+        - Networkallocations
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/networkallocation-output'
+    post:
+      operationId: POST-networkallocation
+      summary: Create NetworkAllocation
+      tags:
+        - Networkallocations
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/networkallocation-input'
+            example:
+              id: 3
+              uuid: ae2ede5b-a3ea-496e-a024-41fdf9f36394
+              address: 192.168.1.32/23
+              node_id: 3
+              network_id: 1
+              network_range_id: 3
+              tenant_id: 1
+              created_at: '2016-10-25T22:15:28.162Z'
+              updated_at: '2016-10-25T22:15:28.162Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/networkallocation-output'
+  '/jigs/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-jig
+      summary: Get Jig
+      tags:
+        - Jigs
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/jig-output'
+    put:
+      operationId: PUT-jig
+      summary: Update Jig
+      tags:
+        - Jigs
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/jig-input'
+            example:
+              id: 4
+              uuid: 353f3064-8ef4-45b2-ae4d-6f9f8db25306
+              name: chef
+              description: Allow Rebar to manage nodes using Chef
+              active: true
+              client_role_name: chef-client
+              server: 'https://192.168.0.2:4646'
+              client_name: rebar
+              key: /home/rebar/.chef/rebar.pem
+              created_at: '2016-10-25T22:04:55.592Z'
+              updated_at: '2016-10-25T22:06:09.524Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/jig-output'
+    delete:
+      operationId: DELETE-jig
+      summary: Delete Jig
+      tags:
+        - Jigs
+      responses:
+        '204':
+          description: ''
+  /jigs:
+    get:
+      operationId: LIST-jigs
+      summary: List Jigs
+      tags:
+        - Jigs
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/jig-output'
+    post:
+      operationId: POST-jig
+      summary: Create Jig
+      tags:
+        - Jigs
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/jig-input'
+            example:
+              id: 4
+              uuid: 353f3064-8ef4-45b2-ae4d-6f9f8db25306
+              name: chef
+              description: Allow Rebar to manage nodes using Chef
+              active: true
+              client_role_name: chef-client
+              server: 'https://192.168.0.2:4646'
+              client_name: rebar
+              key: /home/rebar/.chef/rebar.pem
+              created_at: '2016-10-25T22:04:55.592Z'
+              updated_at: '2016-10-25T22:06:09.524Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/jig-output'
+  '/hammers/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-hammer
+      summary: Get Hammer
+      tags:
+        - Hammers
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/hammer-output'
+    put:
+      operationId: PUT-hammer
+      summary: Update Hammer
+      tags:
+        - Hammers
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/hammer-input'
+            example:
+              id: 1
+              uuid: 2469ae9b-9a10-41a0-9a33-6883741c07d3
+              name: ssh
+              node_id: 2
+              available_hammer_id: 1
+              priority: 0
+              endpoint: null
+              username: root
+              authenticator: null
+              actions:
+                power:
+                  - reboot
+                xfer:
+                  - copy_from
+                  - copy_to
+                run:
+                  - run
+              created_at: null
+              updated_at: null
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/hammer-output'
+    delete:
+      operationId: DELETE-hammer
+      summary: Delete Hammer
+      tags:
+        - Hammers
+      responses:
+        '204':
+          description: ''
+  /hammers:
+    get:
+      operationId: LIST-hammers
+      summary: List Hammers
+      tags:
+        - Hammers
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/hammer-output'
+    post:
+      operationId: POST-hammer
+      summary: Create Hammer
+      tags:
+        - Hammers
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/hammer-input'
+            example:
+              id: 1
+              uuid: 2469ae9b-9a10-41a0-9a33-6883741c07d3
+              name: ssh
+              node_id: 2
+              available_hammer_id: 1
+              priority: 0
+              endpoint: null
+              username: root
+              authenticator: null
+              actions:
+                power:
+                  - reboot
+                xfer:
+                  - copy_from
+                  - copy_to
+                run:
+                  - run
+              created_at: null
+              updated_at: null
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/hammer-output'
+  '/dnsnamefilters/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-dnsnamefilters
+      summary: Get DNSNameFilters
+      tags:
+        - Dnsnamefilters
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/dnsnamefilters-output'
+    put:
+      operationId: PUT-dnsnamefilters
+      summary: Update DNSNameFilters
+      tags:
+        - Dnsnamefilters
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/dnsnamefilters-input'
+            example:
+              id: 1
+              uuid: a40ebf92-5a74-4773-8171-0b62ff91a55a
+              name: default
+              matcher: net.category == "admin"
+              priority: 50
+              service: system
+              template: '{{node.name}}.local.neode.org'
+              tenant_id: 1
+              created_at: '2016-10-25T22:06:34.795Z'
+              updated_at: '2016-10-25T22:06:34.795Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/dnsnamefilters-output'
+    delete:
+      operationId: DELETE-dnsnamefilters
+      summary: Delete DNSNameFilters
+      tags:
+        - Dnsnamefilters
+      responses:
+        '204':
+          description: ''
+  /dnsnamefilters:
+    get:
+      operationId: LIST-dnsnamefilters
+      summary: List Dnsnamefilters
+      tags:
+        - Dnsnamefilters
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/dnsnamefilters-output'
+    post:
+      operationId: POST-dnsnamefilters
+      summary: Create DNSNameFilters
+      tags:
+        - Dnsnamefilters
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/dnsnamefilters-input'
+            example:
+              id: 1
+              uuid: a40ebf92-5a74-4773-8171-0b62ff91a55a
+              name: default
+              matcher: net.category == "admin"
+              priority: 50
+              service: system
+              template: '{{node.name}}.local.neode.org'
+              tenant_id: 1
+              created_at: '2016-10-25T22:06:34.795Z'
+              updated_at: '2016-10-25T22:06:34.795Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/dnsnamefilters-output'
+  '/eventsinks/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-eventsink
+      summary: Get EventSink
+      tags:
+        - Eventsinks
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/eventsink-output'
+    put:
+      operationId: PUT-eventsink
+      summary: Update EventSink
+      tags:
+        - Eventsinks
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/eventsink-input'
+            example:
+              id: 2
+              uuid: 8c107776-20be-4a7f-a84b-989bef1954b7
+              endpoint: 'inproc://role:chef-client/on_node_delete'
+              username: ''
+              authenticator: ''
+              notes: ''
+              tenant_id: 1
+              created_at: '2016-10-25T22:04:57.165Z'
+              updated_at: '2016-10-25T22:04:57.165Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/eventsink-output'
+    delete:
+      operationId: DELETE-eventsink
+      summary: Delete EventSink
+      tags:
+        - Eventsinks
+      responses:
+        '204':
+          description: ''
+  /eventsinks:
+    get:
+      operationId: LIST-eventsinks
+      summary: List Eventsinks
+      tags:
+        - Eventsinks
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/eventsink-output'
+    post:
+      operationId: POST-eventsink
+      summary: Create EventSink
+      tags:
+        - Eventsinks
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/eventsink-input'
+            example:
+              id: 2
+              uuid: 8c107776-20be-4a7f-a84b-989bef1954b7
+              endpoint: 'inproc://role:chef-client/on_node_delete'
+              username: ''
+              authenticator: ''
+              notes: ''
+              tenant_id: 1
+              created_at: '2016-10-25T22:04:57.165Z'
+              updated_at: '2016-10-25T22:04:57.165Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/eventsink-output'
+  '/eventselectors/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-eventselector
+      summary: Get EventSelector
+      tags:
+        - Eventselectors
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/eventselector-output'
+    put:
+      operationId: PUT-eventselector
+      summary: Update EventSelector
+      tags:
+        - Eventselectors
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/eventselector-input'
+            example:
+              id: 1
+              uuid: 2be67739-9a02-4d86-aaca-ac83af0e4f60
+              event_sink_id: 2
+              tenant_id: 1
+              selector:
+                event: on_node_delete
+                obj_class: role
+                obj_id: chef-client
+              created_at: '2016-10-25T22:04:57.181Z'
+              updated_at: '2016-10-25T22:04:57.181Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/eventselector-output'
+    delete:
+      operationId: DELETE-eventselector
+      summary: Delete EventSelector
+      tags:
+        - Eventselectors
+      responses:
+        '204':
+          description: ''
+  /eventselectors:
+    get:
+      operationId: LIST-eventselectors
+      summary: List Eventselectors
+      tags:
+        - Eventselectors
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/eventselector-output'
+    post:
+      operationId: POST-eventselector
+      summary: Create EventSelector
+      tags:
+        - Eventselectors
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/eventselector-input'
+            example:
+              id: 1
+              uuid: 2be67739-9a02-4d86-aaca-ac83af0e4f60
+              event_sink_id: 2
+              tenant_id: 1
+              selector:
+                event: on_node_delete
+                obj_class: role
+                obj_id: chef-client
+              created_at: '2016-10-25T22:04:57.181Z'
+              updated_at: '2016-10-25T22:04:57.181Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/eventselector-output'
+  '/dnsnameentries/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-dnsnameentries
+      summary: Get DNSNameEntries
+      tags:
+        - Dnsnameentries
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/dnsnameentries-output'
+    put:
+      operationId: PUT-dnsnameentries
+      summary: Update DNSNameEntries
+      tags:
+        - Dnsnameentries
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/dnsnameentries-input'
+            example:
+              id: 1
+              uuid: 0aa3689a-9456-44d6-9dde-3b2fd10c678a
+              name: phxhdc9dn0029.local.neode.org
+              network_allocation_id: 1
+              dns_name_filter_id: 1
+              rr_type: A
+              tenant_id: 1
+              created_at: null
+              updated_at: null
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/dnsnameentries-output'
+    delete:
+      operationId: DELETE-dnsnameentries
+      summary: Delete DNSNameEntries
+      tags:
+        - Dnsnameentries
+      responses:
+        '204':
+          description: ''
+  /dnsnameentries:
+    get:
+      operationId: LIST-dnsnameentries
+      summary: List Dnsnameentries
+      tags:
+        - Dnsnameentries
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/dnsnameentries-output'
+    post:
+      operationId: POST-dnsnameentries
+      summary: Create DNSNameEntries
+      tags:
+        - Dnsnameentries
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/dnsnameentries-input'
+            example:
+              id: 1
+              uuid: 0aa3689a-9456-44d6-9dde-3b2fd10c678a
+              name: phxhdc9dn0029.local.neode.org
+              network_allocation_id: 1
+              dns_name_filter_id: 1
+              rr_type: A
+              tenant_id: 1
+              created_at: null
+              updated_at: null
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/dnsnameentries-output'
+  '/deployments/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-deployments
+      summary: Get Deployments
+      tags:
+        - Deployments
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/deployments-output'
+    put:
+      operationId: PUT-deployments
+      summary: Update Deployments
+      tags:
+        - Deployments
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/deployments-input'
+            example:
+              id: 2
+              uuid: 2cd67d10-4deb-4d8b-9ef5-69a23974813a
+              name: rack2-48
+              state: 2
+              description: ''
+              system: false
+              parent_id: 1
+              tenant_id: 1
+              created_at: '2016-10-25T22:32:13.421Z'
+              updated_at: '2016-10-25T22:38:08.518Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/deployments-output'
+    delete:
+      operationId: DELETE-deployments
+      summary: Delete Deployments
+      tags:
+        - Deployments
+      responses:
+        '204':
+          description: ''
+  /deployments:
+    get:
+      operationId: LIST-deployments
+      summary: List Deployments
+      tags:
+        - Deployments
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/deployments-output'
+    post:
+      operationId: POST-deployments
+      summary: Create Deployments
+      tags:
+        - Deployments
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/deployments-input'
+            example:
+              id: 2
+              uuid: 2cd67d10-4deb-4d8b-9ef5-69a23974813a
+              name: rack2-48
+              state: 2
+              description: ''
+              system: false
+              parent_id: 1
+              tenant_id: 1
+              created_at: '2016-10-25T22:32:13.421Z'
+              updated_at: '2016-10-25T22:38:08.518Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/deployments-output'
+  '/deploymentroles/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-deploymentroles
+      summary: Get Deploymentroles
+      tags:
+        - Deploymentroles
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/deploymentroles-output'
+    put:
+      operationId: PUT-deploymentroles
+      summary: Update Deploymentroles
+      tags:
+        - Deploymentroles
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/deploymentroles-input'
+            example:
+              id: 4
+              uuid: e5f7d388-b5e2-4527-a39d-e284f103dda2
+              deployment_id: 1
+              role_id: 29
+              created_at: '2016-10-25T22:05:39.015Z'
+              updated_at: '2016-10-25T22:05:45.678Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/deploymentroles-output'
+    delete:
+      operationId: DELETE-deploymentroles
+      summary: Delete Deploymentroles
+      tags:
+        - Deploymentroles
+      responses:
+        '204':
+          description: ''
+  /deploymentroles:
+    get:
+      operationId: LIST-deploymentroles
+      summary: List Deploymentroles
+      tags:
+        - Deploymentroles
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/deploymentroles-output'
+    post:
+      operationId: POST-deploymentroles
+      summary: Create Deploymentroles
+      tags:
+        - Deploymentroles
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/deploymentroles-input'
+            example:
+              id: 4
+              uuid: e5f7d388-b5e2-4527-a39d-e284f103dda2
+              deployment_id: 1
+              role_id: 29
+              created_at: '2016-10-25T22:05:39.015Z'
+              updated_at: '2016-10-25T22:05:45.678Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/deploymentroles-output'
+  '/capabilities/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-capabilities
+      summary: Get Capabilities
+      tags:
+        - Capabilities
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/capabilities-output'
+    put:
+      operationId: PUT-capabilities
+      summary: Update Capabilities
+      tags:
+        - Capabilities
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/capabilities-input'
+            example:
+              id: 1
+              uuid: 6593eb72-d07e-4fe8-8027-6b92beef0331
+              name: SUPERUSER
+              description: Blanket authority do do everything
+              source: bootstrap
+              created_at: '2016-10-25T22:04:07.324Z'
+              updated_at: '2016-10-25T22:04:07.324Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/capabilities-output'
+    delete:
+      operationId: DELETE-capabilities
+      summary: Delete Capabilities
+      tags:
+        - Capabilities
+      responses:
+        '204':
+          description: ''
+  /capabilities:
+    get:
+      operationId: LIST-capabilities
+      summary: List Capabilities
+      tags:
+        - Capabilities
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/capabilities-output'
+    post:
+      operationId: POST-capabilities
+      summary: Create Capabilities
+      tags:
+        - Capabilities
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/capabilities-input'
+            example:
+              id: 1
+              uuid: 6593eb72-d07e-4fe8-8027-6b92beef0331
+              name: SUPERUSER
+              description: Blanket authority do do everything
+              source: bootstrap
+              created_at: '2016-10-25T22:04:07.324Z'
+              updated_at: '2016-10-25T22:04:07.324Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/capabilities-output'
+  '/availablehammers/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-availablehammers
+      summary: Get AvailableHammers
+      tags:
+        - Availablehammers
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/availablehammers-output'
+    put:
+      operationId: PUT-availablehammers
+      summary: Update AvailableHammers
+      tags:
+        - Availablehammers
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/availablehammers-input'
+            example:
+              created_at: '2016-10-25T22:05:06.093Z'
+              id: 1
+              klass: SecureShellHammer
+              name: ssh
+              priority: 0
+              updated_at: '2016-10-25T22:05:06.093Z'
+              uuid: adcb794c-cc17-4e7e-93c2-23564225f142
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/availablehammers-output'
+    delete:
+      operationId: DELETE-availablehammers
+      summary: Delete AvailableHammers
+      tags:
+        - Availablehammers
+      responses:
+        '204':
+          description: ''
+  /availablehammers:
+    get:
+      operationId: LIST-availablehammers
+      summary: List Availablehammers
+      tags:
+        - Availablehammers
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/availablehammers-output'
+    post:
+      operationId: POST-availablehammers
+      summary: Create AvailableHammers
+      tags:
+        - Availablehammers
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/availablehammers-input'
+            example:
+              created_at: '2016-10-25T22:05:06.093Z'
+              id: 1
+              klass: SecureShellHammer
+              name: ssh
+              priority: 0
+              updated_at: '2016-10-25T22:05:06.093Z'
+              uuid: adcb794c-cc17-4e7e-93c2-23564225f142
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/availablehammers-output'
+  '/attribs/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-attrib
+      summary: Get Attrib
+      tags:
+        - Attribs
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/attrib-output'
+    put:
+      operationId: PUT-attrib
+      summary: Update Attrib
+      tags:
+        - Attribs
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/attrib-input'
+            example:
+              id: 2
+              uuid: d8da6f87-b95c-4149-95a8-11583ef4a2d5
+              name: example-root-file
+              description: Information about the root file
+              barclamp_id: 2
+              role_id: 2
+              type: null
+              writable: true
+              schema:
+                mapping:
+                  =:
+                    type: str
+                type: map
+              map: cert/root
+              order: 10000
+              value: null
+              default:
+                value:
+                  destination: /etc/example-root.pem
+                  group: root
+                  perm: '0600'
+                  user: root
+              created_at: '2016-10-25T22:04:56.327Z'
+              updated_at: '2016-10-25T22:04:56.339Z'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/attrib-output'
+    delete:
+      operationId: DELETE-attrib
+      summary: Delete Attrib
+      tags:
+        - Attribs
+      responses:
+        '204':
+          description: ''
+  /attribs:
+    get:
+      operationId: LIST-attribs
+      summary: List Attribs
+      tags:
+        - Attribs
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/attrib-output'
+    post:
+      operationId: POST-attrib
+      summary: Create Attrib
+      tags:
+        - Attribs
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/attrib-input'
+            example:
+              id: 2
+              uuid: d8da6f87-b95c-4149-95a8-11583ef4a2d5
+              name: example-root-file
+              description: Information about the root file
+              barclamp_id: 2
+              role_id: 2
+              type: null
+              writable: true
+              schema:
+                mapping:
+                  =:
+                    type: str
+                type: map
+              map: cert/root
+              order: 10000
+              value: null
+              default:
+                value:
+                  destination: /etc/example-root.pem
+                  group: root
+                  perm: '0600'
+                  user: root
+              created_at: '2016-10-25T22:04:56.327Z'
+              updated_at: '2016-10-25T22:04:56.339Z'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/attrib-output'
+  '/barclamps/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-barclamp
+      summary: Get Barclamp
+      tags:
+        - Barclamps
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/barclamp-output'
+    put:
+      operationId: PUT-barclamp
+      summary: Update Barclamp
+      tags:
+        - Barclamps
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/barclamp-input'
+            example:
+              barclamp_id: 1
+              build_on: null
+              build_version: '0.0'
+              cfg_data:
+                barclamp:
+                  description: Core DigitalRebar functionality
+                  display: Core
+                  license: Apache 2
+                  license_url: 'https://github.com/digitalrebar/core/blob/develop/doc/licenses/README.md'
+                  name: core
+                  source_path: /opt/digitalrebar/core
+                  source_url: 'https://github.com/digitalrebar/core'
+                  version: 2.E
+                jigs:
+                  - class: 'BarclampRebar::Jig'
+                    description: Run arbitrary scripts on nodes via SSH
+                    name: script
+                  - class: NoopJig
+                    description: Jig used when roles have no action to run
+                    name: noop
+                  - class: 'BarclampTest::Jig'
+                    description: Test jig for exercising jig and noderole operations.
+                    name: test
+                  - class: 'BarclampChef::Jig'
+                    description: Allow Rebar to manage nodes using Chef
+                    implementor: chef-client
+                    name: chef
+                  - class: 'BarclampChef::SoloJig'
+                    description: Allow Rebar to manage nodes using chef-solo
+                    implementor: chef-solo
+                    name: chef-solo
+                  - class: 'BarclampPuppet::SaJig'
+                    description: Puppet jig for using standalone puppet agent
+                    name: puppet-sa
+                  - class: 'BarclampRebar::RoleProvidedJig'
+                    description: Jig that delegates back to a role-provided do_transition method
+                    name: role-provided
+                  - class: 'BarclampRebar::AnsiblePlaybookJig'
+                    description: Allow Rebar to run an Ansible playbook against a node
+                    name: ansible-playbook
+                  - class: 'BarclampRebar::AnsibleJig'
+                    description: Allow Rebar to run an Ansible command/module against a node
+                    name: ansible
+                os_support:
+                  - ubuntu-12.04
+                  - ubuntu-14.04
+                  - ubuntu-15.04
+                  - redhat-6.5
+                  - redhat-6.6
+                  - redhat-6.7
+                  - centos-6.5
+                  - centos-6.6
+                  - centos-6.7
+                  - centos-7.1.1503
+                  - opensuse-13.1
+                  - fedora-20
+                  - debian-7
+                  - debian-8
+                  - xenserver-6.5
+                  - esxi-5.5
+                  - fuel-6.0
+                rebar:
+                  layout: 2
+              commit: null
+              created_at: '2016-10-25T22:04:55.457Z'
+              description: Core DigitalRebar functionality
+              id: 1
+              name: core
+              source_path: /opt/digitalrebar/core
+              source_url: 'https://github.com/digitalrebar/core'
+              updated_at: '2016-10-25T22:04:55.499Z'
+              uuid: 686e747f-3078-4946-8288-a12ea4e1f175
+              version: 2
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/barclamp-output'
+    delete:
+      operationId: DELETE-barclamp
+      summary: Delete Barclamp
+      tags:
+        - Barclamps
+      responses:
+        '204':
+          description: ''
+  /barclamps:
+    get:
+      operationId: LIST-barclamps
+      summary: List Barclamps
+      tags:
+        - Barclamps
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/barclamp-output'
+    post:
+      operationId: POST-barclamp
+      summary: Create Barclamp
+      tags:
+        - Barclamps
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/barclamp-input'
+            example:
+              barclamp_id: 1
+              build_on: null
+              build_version: '0.0'
+              cfg_data:
+                barclamp:
+                  description: Core DigitalRebar functionality
+                  display: Core
+                  license: Apache 2
+                  license_url: 'https://github.com/digitalrebar/core/blob/develop/doc/licenses/README.md'
+                  name: core
+                  source_path: /opt/digitalrebar/core
+                  source_url: 'https://github.com/digitalrebar/core'
+                  version: 2.E
+                jigs:
+                  - class: 'BarclampRebar::Jig'
+                    description: Run arbitrary scripts on nodes via SSH
+                    name: script
+                  - class: NoopJig
+                    description: Jig used when roles have no action to run
+                    name: noop
+                  - class: 'BarclampTest::Jig'
+                    description: Test jig for exercising jig and noderole operations.
+                    name: test
+                  - class: 'BarclampChef::Jig'
+                    description: Allow Rebar to manage nodes using Chef
+                    implementor: chef-client
+                    name: chef
+                  - class: 'BarclampChef::SoloJig'
+                    description: Allow Rebar to manage nodes using chef-solo
+                    implementor: chef-solo
+                    name: chef-solo
+                  - class: 'BarclampPuppet::SaJig'
+                    description: Puppet jig for using standalone puppet agent
+                    name: puppet-sa
+                  - class: 'BarclampRebar::RoleProvidedJig'
+                    description: Jig that delegates back to a role-provided do_transition method
+                    name: role-provided
+                  - class: 'BarclampRebar::AnsiblePlaybookJig'
+                    description: Allow Rebar to run an Ansible playbook against a node
+                    name: ansible-playbook
+                  - class: 'BarclampRebar::AnsibleJig'
+                    description: Allow Rebar to run an Ansible command/module against a node
+                    name: ansible
+                os_support:
+                  - ubuntu-12.04
+                  - ubuntu-14.04
+                  - ubuntu-15.04
+                  - redhat-6.5
+                  - redhat-6.6
+                  - redhat-6.7
+                  - centos-6.5
+                  - centos-6.6
+                  - centos-6.7
+                  - centos-7.1.1503
+                  - opensuse-13.1
+                  - fedora-20
+                  - debian-7
+                  - debian-8
+                  - xenserver-6.5
+                  - esxi-5.5
+                  - fuel-6.0
+                rebar:
+                  layout: 2
+              commit: null
+              created_at: '2016-10-25T22:04:55.457Z'
+              description: Core DigitalRebar functionality
+              id: 1
+              name: core
+              source_path: /opt/digitalrebar/core
+              source_url: 'https://github.com/digitalrebar/core'
+              updated_at: '2016-10-25T22:04:55.499Z'
+              uuid: 686e747f-3078-4946-8288-a12ea4e1f175
+              version: 2
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/barclamp-output'
+  '/roles/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-roles
+      summary: Get Roles
+      tags:
+        - Roles
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/roles-output'
+    put:
+      operationId: PUT-roles
+      summary: Update Roles
+      tags:
+        - Roles
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/roles-input'
+            example:
+              abstract: false
+              attribs:
+                - network-bmc-rack_use_bridge
+                - network-bmc-rack_use_team
+                - network-bmc-rack_use_vlan
+                - network-bmc-rack_team_mode
+                - network-bmc-rack_vlan
+                - network-bmc-rack_resolved_conduit
+                - network-bmc-rack_conduit
+                - network-bmc-rack_targets
+                - network-bmc-rack_addresses
+              barclamp_id: 10
+              bootstrap: false
+              cluster: false
+              cohort: 1
+              conflicts: []
+              created_at: '2016-10-25T22:06:33.476Z'
+              description: Created Automatically by bmc-rack
+              destructive: false
+              discovery: false
+              icon: device_hub
+              id: 134
+              implicit: true
+              jig_name: noop
+              leaverunlog: false
+              library: false
+              metadata: {}
+              milestone: true
+              name: network-bmc-rack
+              powersave: false
+              preceeds: []
+              provides: []
+              replace_node_icon: false
+              requires:
+                - network-server
+              service: false
+              updated_at: '2016-10-25T22:06:33.476Z'
+              uuid: aa85dfb9-3081-464a-b86c-e889654a23f0
+              wanted_attribs:
+                - network_interface_maps
+                - network-current-config
+                - network-wanted-config
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/roles-output'
+    delete:
+      operationId: DELETE-roles
+      summary: Delete Roles
+      tags:
+        - Roles
+      responses:
+        '204':
+          description: ''
+  /roles:
+    get:
+      operationId: LIST-roles
+      summary: List Roles
+      tags:
+        - Roles
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/roles-output'
+    post:
+      operationId: POST-roles
+      summary: Create Roles
+      tags:
+        - Roles
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/roles-input'
+            example:
+              abstract: false
+              attribs:
+                - network-bmc-rack_use_bridge
+                - network-bmc-rack_use_team
+                - network-bmc-rack_use_vlan
+                - network-bmc-rack_team_mode
+                - network-bmc-rack_vlan
+                - network-bmc-rack_resolved_conduit
+                - network-bmc-rack_conduit
+                - network-bmc-rack_targets
+                - network-bmc-rack_addresses
+              barclamp_id: 10
+              bootstrap: false
+              cluster: false
+              cohort: 1
+              conflicts: []
+              created_at: '2016-10-25T22:06:33.476Z'
+              description: Created Automatically by bmc-rack
+              destructive: false
+              discovery: false
+              icon: device_hub
+              id: 134
+              implicit: true
+              jig_name: noop
+              leaverunlog: false
+              library: false
+              metadata: {}
+              milestone: true
+              name: network-bmc-rack
+              powersave: false
+              preceeds: []
+              provides: []
+              replace_node_icon: false
+              requires:
+                - network-server
+              service: false
+              updated_at: '2016-10-25T22:06:33.476Z'
+              uuid: aa85dfb9-3081-464a-b86c-e889654a23f0
+              wanted_attribs:
+                - network_interface_maps
+                - network-current-config
+                - network-wanted-config
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/roles-output'
+  '/profiles/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-profile
+      summary: Get Profile
+      tags:
+        - Profiles
+      responses:
+        '200':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+    put:
+      operationId: PUT-profile
+      summary: Update Profile
+      tags:
+        - Profiles
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/profile-input'
+            example:
+              name: pariatur
+              tenant_id: -19374921
+              values: {}
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/profile-output'
+    delete:
+      operationId: DELETE-profile
+      summary: Delete Profile
+      tags:
+        - Profiles
+      responses:
+        '204':
+          description: ''
+  /profiles:
+    get:
+      operationId: LIST-profiles
+      summary: List Profiles
+      tags:
+        - Profiles
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/profile-output'
+    post:
+      operationId: POST-profile
+      summary: Create Profile
+      tags:
+        - Profiles
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/profile-input'
+            example:
+              name: pariatur
+              tenant_id: -19374921
+              values: {}
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/profile-output'
+  '/nodes/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-node
+      summary: Get Node
+      tags:
+        - Nodes
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/node-output'
+      security:
+        - Authorization: []
+        - auth_token: []
+    put:
+      operationId: PUT-node
+      summary: Update Node
+      tags:
+        - Nodes
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/node-input'
+      responses:
+        '200':
+          description: ''
+          schema:
+            : '#/definitions/node-output'
+    delete:
+      operationId: DELETE-node
+      summary: Delete Node
+      tags:
+        - Nodes
+      responses:
+        '204':
+          description: ''
+  /nodes:
+    get:
+      operationId: LIST-nodes
+      summary: List Nodes
+      tags:
+        - Nodes
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              : '#/definitions/node-output'
+    post:
+      operationId: POST-node
+      summary: Create Node
+      tags:
+        - Nodes
+      parameters:
+        - name: body
+          in: body
+          schema:
+            : '#/definitions/node-input'
+      responses:
+        '201':
+          description: ''
+          schema:
+            : '#/definitions/node-output'
+    patch:
+      operationId: PATCH-node
+      summary: Patch Nodes
+      tags:
+        - Nodes
+      responses:
+        default:
+          description: ''
+          schema: {}
+definitions:
+  node-input:
+    type: object
+    properties:
+      name:
+        type: string
+        maxLength: 255
+        format: hostname
+      description:
+        type: string
+      order:
+        type: integer
+      admin:
+        type: boolean
+      target_role_id:
+        type: integer
+      deployment_id:
+        type: integer
+      provider_id:
+        type: integer
+      variant:
+        type: string
+      arch:
+        type: string
+      os_family:
+        type: string
+      discovery:
+        type: object
+      hint:
+        type: object
+      allocated:
+        type: boolean
+      bootenv:
+        type: string
+      quirks:
+        type: array
+        items:
+          type: string
+      system:
+        type: boolean
+      notes:
+        type: object
+      alive:
+        type: boolean
+      node-control-address:
+        type: string
+      profiles:
+        type: array
+        items:
+          type: string
+      uuid:
+        type: string
+        format: uuid
+      icon:
+        type: string
+  node-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+        required:
+          - id
+      - : '#/definitions/node-input'
+    example:
+      id: -59522530
+      created_at: '5128-04-01T18:41:35.096Z'
+      updated_at: '3812-11-22T20:46:37.476Z'
+  profile-input:
+    type: object
+    properties:
+      name:
+        type: string
+      tenant_id:
+        type: integer
+      values:
+        type: object
+    example:
+      name: pariatur
+      tenant_id: -19374921
+      values: {}
+  profile-output:
+    allOf:
+      - type: object
+        properties:
+          created_at:
+            type: string
+          id:
+            type: integer
+          updated_at:
+            type: string
+          uuid:
+            type: string
+      - : '#/definitions/profile-input'
+    example:
+      created_at: nisi minim fugiat
+      id: 9901498
+      updated_at: proident ea ipsum
+      uuid: aute
+      name: pariatur
+      tenant_id: -19374921
+      values: {}
+  roles-input:
+    type: object
+    properties:
+      abstract:
+        type: boolean
+      attribs:
+        type: array
+        items:
+          type: string
+      barclamp_id:
+        type: integer
+      bootstrap:
+        type: boolean
+      cluster:
+        type: boolean
+      cohort:
+        type: integer
+      conflicts:
+        type: array
+        items:
+          type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      destructive:
+        type: boolean
+      discovery:
+        type: boolean
+      icon:
+        type: string
+      id:
+        type: integer
+      implicit:
+        type: boolean
+      jig_name:
+        type: string
+      leaverunlog:
+        type: boolean
+      library:
+        type: boolean
+      metadata:
+        type: object
+      milestone:
+        type: boolean
+      name:
+        type: string
+      powersave:
+        type: boolean
+      preceeds:
+        type: array
+        items:
+          type: string
+      provides:
+        type: array
+        items:
+          type: string
+      replace_node_icon:
+        type: boolean
+      requires:
+        type: array
+        items:
+          type: string
+      service:
+        type: boolean
+      updated_at:
+        type: string
+      uuid:
+        type: string
+      wanted_attribs:
+        type: array
+        items:
+          type: string
+    example:
+      abstract: false
+      attribs:
+        - network-bmc-rack_use_bridge
+        - network-bmc-rack_use_team
+        - network-bmc-rack_use_vlan
+        - network-bmc-rack_team_mode
+        - network-bmc-rack_vlan
+        - network-bmc-rack_resolved_conduit
+        - network-bmc-rack_conduit
+        - network-bmc-rack_targets
+        - network-bmc-rack_addresses
+      barclamp_id: 10
+      bootstrap: false
+      cluster: false
+      cohort: 1
+      conflicts: []
+      created_at: '2016-10-25T22:06:33.476Z'
+      description: Created Automatically by bmc-rack
+      destructive: false
+      discovery: false
+      icon: device_hub
+      id: 134
+      implicit: true
+      jig_name: noop
+      leaverunlog: false
+      library: false
+      metadata: {}
+      milestone: true
+      name: network-bmc-rack
+      powersave: false
+      preceeds: []
+      provides: []
+      replace_node_icon: false
+      requires:
+        - network-server
+      service: false
+      updated_at: '2016-10-25T22:06:33.476Z'
+      uuid: aa85dfb9-3081-464a-b86c-e889654a23f0
+      wanted_attribs:
+        - network_interface_maps
+        - network-current-config
+        - network-wanted-config
+  roles-output:
+    allOf:
+      - type: object
+        properties:
+          created_at:
+            type: string
+          id:
+            type: integer
+          updated_at:
+            type: string
+          uuid:
+            type: string
+      - : '#/definitions/roles-input'
+    example:
+      abstract: false
+      attribs:
+        - network-bmc-rack_use_bridge
+        - network-bmc-rack_use_team
+        - network-bmc-rack_use_vlan
+        - network-bmc-rack_team_mode
+        - network-bmc-rack_vlan
+        - network-bmc-rack_resolved_conduit
+        - network-bmc-rack_conduit
+        - network-bmc-rack_targets
+        - network-bmc-rack_addresses
+      barclamp_id: 10
+      bootstrap: false
+      cluster: false
+      cohort: 1
+      conflicts: []
+      created_at: '2016-10-25T22:06:33.476Z'
+      description: Created Automatically by bmc-rack
+      destructive: false
+      discovery: false
+      icon: device_hub
+      id: 134
+      implicit: true
+      jig_name: noop
+      leaverunlog: false
+      library: false
+      metadata: {}
+      milestone: true
+      name: network-bmc-rack
+      powersave: false
+      preceeds: []
+      provides: []
+      replace_node_icon: false
+      requires:
+        - network-server
+      service: false
+      updated_at: '2016-10-25T22:06:33.476Z'
+      uuid: aa85dfb9-3081-464a-b86c-e889654a23f0
+      wanted_attribs:
+        - network_interface_maps
+        - network-current-config
+        - network-wanted-config
+  barclamp-input:
+    type: object
+    properties:
+      barclamp_id:
+        type: integer
+      build_on:
+        type: string
+      build_version:
+        type: string
+      cfg_data:
+        type: object
+        properties:
+          barclamp:
+            type: object
+            properties:
+              description:
+                type: string
+              display:
+                type: string
+              license:
+                type: string
+              license_url:
+                type: string
+              name:
+                type: string
+              source_path:
+                type: string
+              source_url:
+                type: string
+              version:
+                type: string
+          jigs:
+            type: array
+            items:
+              type: object
+              properties:
+                class:
+                  type: string
+                description:
+                  type: string
+                name:
+                  type: string
+                implementor:
+                  type: string
+          os_support:
+            type: array
+            items:
+              type: string
+          rebar:
+            type: object
+            properties:
+              layout:
+                type: integer
+      commit:
+        type: string
+      description:
+        type: string
+      name:
+        type: string
+      source_path:
+        type: string
+      source_url:
+        type: string
+      version:
+        type: integer
+    example:
+      barclamp_id: 1
+      build_on: 'null'
+      build_version: '0.0'
+      cfg_data:
+        barclamp:
+          description: Core DigitalRebar functionality
+          display: Core
+          license: Apache 2
+          license_url: 'https://github.com/digitalrebar/core/blob/develop/doc/licenses/README.md'
+          name: core
+          source_path: /opt/digitalrebar/core
+          source_url: 'https://github.com/digitalrebar/core'
+          version: 2.E
+        jigs:
+          - class: 'BarclampRebar::Jig'
+            description: Run arbitrary scripts on nodes via SSH
+            name: script
+          - class: NoopJig
+            description: Jig used when roles have no action to run
+            name: noop
+          - class: 'BarclampTest::Jig'
+            description: Test jig for exercising jig and noderole operations.
+            name: test
+          - class: 'BarclampChef::Jig'
+            description: Allow Rebar to manage nodes using Chef
+            implementor: chef-client
+            name: chef
+          - class: 'BarclampChef::SoloJig'
+            description: Allow Rebar to manage nodes using chef-solo
+            implementor: chef-solo
+            name: chef-solo
+          - class: 'BarclampPuppet::SaJig'
+            description: Puppet jig for using standalone puppet agent
+            name: puppet-sa
+          - class: 'BarclampRebar::RoleProvidedJig'
+            description: Jig that delegates back to a role-provided do_transition method
+            name: role-provided
+          - class: 'BarclampRebar::AnsiblePlaybookJig'
+            description: Allow Rebar to run an Ansible playbook against a node
+            name: ansible-playbook
+          - class: 'BarclampRebar::AnsibleJig'
+            description: Allow Rebar to run an Ansible command/module against a node
+            name: ansible
+        os_support:
+          - ubuntu-12.04
+          - ubuntu-14.04
+          - ubuntu-15.04
+          - redhat-6.5
+          - redhat-6.6
+          - redhat-6.7
+          - centos-6.5
+          - centos-6.6
+          - centos-6.7
+          - centos-7.1.1503
+          - opensuse-13.1
+          - fedora-20
+          - debian-7
+          - debian-8
+          - xenserver-6.5
+          - esxi-5.5
+          - fuel-6.0
+        rebar:
+          layout: 2
+      commit: 'null'
+      created_at: '2016-10-25T22:04:55.457Z'
+      description: Core DigitalRebar functionality
+      id: 1
+      name: core
+      source_path: /opt/digitalrebar/core
+      source_url: 'https://github.com/digitalrebar/core'
+      updated_at: '2016-10-25T22:04:55.499Z'
+      uuid: 686e747f-3078-4946-8288-a12ea4e1f175
+      version: 2
+  barclamp-output:
+    allOf:
+      - type: object
+        properties:
+          created_at:
+            type: string
+          id:
+            type: integer
+          updated_at:
+            type: string
+          uuid:
+            type: string
+      - : '#/definitions/barclamp-input'
+    example:
+      barclamp_id: 1
+      build_on: null
+      build_version: '0.0'
+      cfg_data:
+        barclamp:
+          description: Core DigitalRebar functionality
+          display: Core
+          license: Apache 2
+          license_url: 'https://github.com/digitalrebar/core/blob/develop/doc/licenses/README.md'
+          name: core
+          source_path: /opt/digitalrebar/core
+          source_url: 'https://github.com/digitalrebar/core'
+          version: 2.E
+        jigs:
+          - class: 'BarclampRebar::Jig'
+            description: Run arbitrary scripts on nodes via SSH
+            name: script
+          - class: NoopJig
+            description: Jig used when roles have no action to run
+            name: noop
+          - class: 'BarclampTest::Jig'
+            description: Test jig for exercising jig and noderole operations.
+            name: test
+          - class: 'BarclampChef::Jig'
+            description: Allow Rebar to manage nodes using Chef
+            implementor: chef-client
+            name: chef
+          - class: 'BarclampChef::SoloJig'
+            description: Allow Rebar to manage nodes using chef-solo
+            implementor: chef-solo
+            name: chef-solo
+          - class: 'BarclampPuppet::SaJig'
+            description: Puppet jig for using standalone puppet agent
+            name: puppet-sa
+          - class: 'BarclampRebar::RoleProvidedJig'
+            description: Jig that delegates back to a role-provided do_transition method
+            name: role-provided
+          - class: 'BarclampRebar::AnsiblePlaybookJig'
+            description: Allow Rebar to run an Ansible playbook against a node
+            name: ansible-playbook
+          - class: 'BarclampRebar::AnsibleJig'
+            description: Allow Rebar to run an Ansible command/module against a node
+            name: ansible
+        os_support:
+          - ubuntu-12.04
+          - ubuntu-14.04
+          - ubuntu-15.04
+          - redhat-6.5
+          - redhat-6.6
+          - redhat-6.7
+          - centos-6.5
+          - centos-6.6
+          - centos-6.7
+          - centos-7.1.1503
+          - opensuse-13.1
+          - fedora-20
+          - debian-7
+          - debian-8
+          - xenserver-6.5
+          - esxi-5.5
+          - fuel-6.0
+        rebar:
+          layout: 2
+      commit: null
+      created_at: '2016-10-25T22:04:55.457Z'
+      description: Core DigitalRebar functionality
+      id: 1
+      name: core
+      source_path: /opt/digitalrebar/core
+      source_url: 'https://github.com/digitalrebar/core'
+      updated_at: '2016-10-25T22:04:55.499Z'
+      uuid: 686e747f-3078-4946-8288-a12ea4e1f175
+      version: 2
+  attrib-input:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      barclamp_id:
+        type: integer
+      role_id:
+        type: integer
+      type:
+        type: string
+      writable:
+        type: boolean
+      schema:
+        type: object
+      map:
+        type: string
+      order:
+        type: integer
+      value:
+        type:
+          - string
+          - array
+          - number
+          - integer
+          - boolean
+          - 'null'
+        items: {}
+      default:
+        type: object
+        properties:
+          value:
+            type: object
+    example:
+      id: 2
+      uuid: d8da6f87-b95c-4149-95a8-11583ef4a2d5
+      name: example-root-file
+      description: Information about the root file
+      barclamp_id: 2
+      role_id: 2
+      type: 'null'
+      writable: true
+      schema:
+        mapping:
+          =:
+            type: str
+        type: map
+      map: cert/root
+      order: 10000
+      value: null
+      default:
+        value:
+          destination: /etc/example-root.pem
+          group: root
+          perm: '0600'
+          user: root
+      created_at: '2016-10-25T22:04:56.327Z'
+      updated_at: '2016-10-25T22:04:56.339Z'
+  attrib-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/attrib-input'
+    example:
+      id: 2
+      uuid: d8da6f87-b95c-4149-95a8-11583ef4a2d5
+      name: example-root-file
+      description: Information about the root file
+      barclamp_id: 2
+      role_id: 2
+      type: null
+      writable: true
+      schema:
+        mapping:
+          =:
+            type: str
+        type: map
+      map: cert/root
+      order: 10000
+      value: null
+      default:
+        value:
+          destination: /etc/example-root.pem
+          group: root
+          perm: '0600'
+          user: root
+      created_at: '2016-10-25T22:04:56.327Z'
+      updated_at: '2016-10-25T22:04:56.339Z'
+  availablehammers-input:
+    type: object
+    properties:
+      klass:
+        type: string
+      name:
+        type: string
+      priority:
+        type: integer
+    example:
+      created_at: '2016-10-25T22:05:06.093Z'
+      id: 1
+      klass: SecureShellHammer
+      name: ssh
+      priority: 0
+      updated_at: '2016-10-25T22:05:06.093Z'
+      uuid: adcb794c-cc17-4e7e-93c2-23564225f142
+  availablehammers-output:
+    allOf:
+      - type: object
+        properties:
+          created_at:
+            type: string
+          id:
+            type: integer
+          updated_at:
+            type: string
+          uuid:
+            type: string
+      - : '#/definitions/availablehammers-input'
+    example:
+      created_at: '2016-10-25T22:05:06.093Z'
+      id: 1
+      klass: SecureShellHammer
+      name: ssh
+      priority: 0
+      updated_at: '2016-10-25T22:05:06.093Z'
+      uuid: adcb794c-cc17-4e7e-93c2-23564225f142
+  capabilities-input:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      source:
+        type: string
+    example:
+      id: 1
+      uuid: 6593eb72-d07e-4fe8-8027-6b92beef0331
+      name: SUPERUSER
+      description: Blanket authority do do everything
+      source: bootstrap
+      created_at: '2016-10-25T22:04:07.324Z'
+      updated_at: '2016-10-25T22:04:07.324Z'
+  capabilities-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/capabilities-input'
+    example:
+      id: 1
+      uuid: 6593eb72-d07e-4fe8-8027-6b92beef0331
+      name: SUPERUSER
+      description: Blanket authority do do everything
+      source: bootstrap
+      created_at: '2016-10-25T22:04:07.324Z'
+      updated_at: '2016-10-25T22:04:07.324Z'
+  deploymentroles-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/deploymentroles-input'
+    example:
+      id: 4
+      uuid: e5f7d388-b5e2-4527-a39d-e284f103dda2
+      deployment_id: 1
+      role_id: 29
+      created_at: '2016-10-25T22:05:39.015Z'
+      updated_at: '2016-10-25T22:05:45.678Z'
+  deploymentroles-input:
+    type: object
+    properties:
+      deployment_id:
+        type: integer
+      role_id:
+        type: integer
+    example:
+      id: 4
+      uuid: e5f7d388-b5e2-4527-a39d-e284f103dda2
+      deployment_id: 1
+      role_id: 29
+      created_at: '2016-10-25T22:05:39.015Z'
+      updated_at: '2016-10-25T22:05:45.678Z'
+  deployments-input:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      system:
+        type: boolean
+      parent_id:
+        type: integer
+      tenant_id:
+        type: integer
+      nodes:
+        type: object
+    example:
+      id: 2
+      uuid: 2cd67d10-4deb-4d8b-9ef5-69a23974813a
+      name: rack2-48
+      state: 2
+      description: ''
+      system: false
+      parent_id: 1
+      tenant_id: 1
+      created_at: '2016-10-25T22:32:13.421Z'
+      updated_at: '2016-10-25T22:38:08.518Z'
+  deployments-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          state:
+            type: integer
+      - : '#/definitions/deployments-input'
+    example:
+      id: 2
+      uuid: 2cd67d10-4deb-4d8b-9ef5-69a23974813a
+      name: rack2-48
+      state: 2
+      description: ''
+      system: false
+      parent_id: 1
+      tenant_id: 1
+      created_at: '2016-10-25T22:32:13.421Z'
+      updated_at: '2016-10-25T22:38:08.518Z'
+  dnsnameentries-input:
+    type: object
+    properties:
+      name:
+        type: string
+      network_allocation_id:
+        type: integer
+      dns_name_filter_id:
+        type: integer
+      rr_type:
+        type: string
+      tenant_id:
+        type: integer
+    example:
+      id: 1
+      uuid: 0aa3689a-9456-44d6-9dde-3b2fd10c678a
+      name: phxhdc9dn0029.local.neode.org
+      network_allocation_id: 1
+      dns_name_filter_id: 1
+      rr_type: A
+      tenant_id: 1
+      created_at: null
+      updated_at: null
+  dnsnameentries-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/dnsnameentries-input'
+    example:
+      id: 1
+      uuid: 0aa3689a-9456-44d6-9dde-3b2fd10c678a
+      name: phxhdc9dn0029.local.neode.org
+      network_allocation_id: 1
+      dns_name_filter_id: 1
+      rr_type: A
+      tenant_id: 1
+      created_at: 'null'
+      updated_at: 'null'
+  dnsnamefilters-input:
+    type: object
+    properties:
+      name:
+        type: string
+      matcher:
+        type: string
+      priority:
+        type: integer
+      service:
+        type: string
+      template:
+        type: string
+      tenant_id:
+        type: integer
+    example:
+      id: 1
+      uuid: a40ebf92-5a74-4773-8171-0b62ff91a55a
+      name: default
+      matcher: net.category == "admin"
+      priority: 50
+      service: system
+      template: '{{node.name}}.local.neode.org'
+      tenant_id: 1
+      created_at: '2016-10-25T22:06:34.795Z'
+      updated_at: '2016-10-25T22:06:34.795Z'
+  dnsnamefilters-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/dnsnamefilters-input'
+    example:
+      id: 1
+      uuid: a40ebf92-5a74-4773-8171-0b62ff91a55a
+      name: default
+      matcher: net.category == "admin"
+      priority: 50
+      service: system
+      template: '{{node.name}}.local.neode.org'
+      tenant_id: 1
+      created_at: '2016-10-25T22:06:34.795Z'
+      updated_at: '2016-10-25T22:06:34.795Z'
+  eventselector-input:
+    type: object
+    properties:
+      event_sink_id:
+        type: integer
+      tenant_id:
+        type: integer
+      selector:
+        type: object
+        properties:
+          event:
+            type: string
+          obj_class:
+            type: string
+          obj_id:
+            type: string
+    example:
+      id: 1
+      uuid: 2be67739-9a02-4d86-aaca-ac83af0e4f60
+      event_sink_id: 2
+      tenant_id: 1
+      selector:
+        event: on_node_delete
+        obj_class: role
+        obj_id: chef-client
+      created_at: '2016-10-25T22:04:57.181Z'
+      updated_at: '2016-10-25T22:04:57.181Z'
+  eventselector-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/eventselector-input'
+    example:
+      id: 1
+      uuid: 2be67739-9a02-4d86-aaca-ac83af0e4f60
+      event_sink_id: 2
+      tenant_id: 1
+      selector:
+        event: on_node_delete
+        obj_class: role
+        obj_id: chef-client
+      created_at: '2016-10-25T22:04:57.181Z'
+      updated_at: '2016-10-25T22:04:57.181Z'
+  eventsink-input:
+    type: object
+    properties:
+      endpoint:
+        type: string
+      username:
+        type: string
+      authenticator:
+        type: string
+      notes:
+        type: string
+      tenant_id:
+        type: integer
+    example:
+      id: 2
+      uuid: 8c107776-20be-4a7f-a84b-989bef1954b7
+      endpoint: 'inproc://role:chef-client/on_node_delete'
+      username: ''
+      authenticator: ''
+      notes: ''
+      tenant_id: 1
+      created_at: '2016-10-25T22:04:57.165Z'
+      updated_at: '2016-10-25T22:04:57.165Z'
+  eventsink-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/eventsink-input'
+    example:
+      id: 2
+      uuid: 8c107776-20be-4a7f-a84b-989bef1954b7
+      endpoint: 'inproc://role:chef-client/on_node_delete'
+      username: ''
+      authenticator: ''
+      notes: ''
+      tenant_id: 1
+      created_at: '2016-10-25T22:04:57.165Z'
+      updated_at: '2016-10-25T22:04:57.165Z'
+  hammer-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/hammer-input'
+    example:
+      id: 1
+      uuid: 2469ae9b-9a10-41a0-9a33-6883741c07d3
+      name: ssh
+      node_id: 2
+      available_hammer_id: 1
+      priority: 0
+      endpoint: ''
+      username: root
+      authenticator: ''
+      actions:
+        power:
+          - reboot
+        xfer:
+          - copy_from
+          - copy_to
+        run:
+          - run
+      created_at: 'null'
+      updated_at: 'null'
+  hammer-input:
+    type: object
+    properties:
+      name:
+        type: string
+      node_id:
+        type: integer
+      available_hammer_id:
+        type: integer
+      priority:
+        type: integer
+      endpoint:
+        type: string
+      username:
+        type: string
+      authenticator:
+        type: string
+      actions:
+        type: object
+    example:
+      id: 1
+      uuid: 2469ae9b-9a10-41a0-9a33-6883741c07d3
+      name: ssh
+      node_id: 2
+      available_hammer_id: 1
+      priority: 0
+      endpoint: null
+      username: root
+      authenticator: null
+      actions:
+        power:
+          - reboot
+        xfer:
+          - copy_from
+          - copy_to
+        run:
+          - run
+      created_at: null
+      updated_at: null
+  jig-input:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      active:
+        type: boolean
+      client_role_name:
+        type: string
+      server:
+        type: string
+      client_name:
+        type: string
+      key:
+        type: string
+    example:
+      id: 4
+      uuid: 353f3064-8ef4-45b2-ae4d-6f9f8db25306
+      name: chef
+      description: Allow Rebar to manage nodes using Chef
+      active: true
+      client_role_name: chef-client
+      server: 'https://192.168.0.2:4646'
+      client_name: rebar
+      key: /home/rebar/.chef/rebar.pem
+      created_at: '2016-10-25T22:04:55.592Z'
+      updated_at: '2016-10-25T22:06:09.524Z'
+  jig-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/jig-input'
+    example:
+      id: 4
+      uuid: 353f3064-8ef4-45b2-ae4d-6f9f8db25306
+      name: chef
+      description: Allow Rebar to manage nodes using Chef
+      active: true
+      client_role_name: chef-client
+      server: 'https://192.168.0.2:4646'
+      client_name: rebar
+      key: /home/rebar/.chef/rebar.pem
+      created_at: '2016-10-25T22:04:55.592Z'
+      updated_at: '2016-10-25T22:06:09.524Z'
+  networkallocation-input:
+    type: object
+    properties:
+      address:
+        type: string
+      node_id:
+        type: integer
+      network_id:
+        type: integer
+      network_range_id:
+        type: integer
+      tenant_id:
+        type: integer
+    example:
+      id: 3
+      uuid: ae2ede5b-a3ea-496e-a024-41fdf9f36394
+      address: 192.168.1.32/23
+      node_id: 3
+      network_id: 1
+      network_range_id: 3
+      tenant_id: 1
+      created_at: '2016-10-25T22:15:28.162Z'
+      updated_at: '2016-10-25T22:15:28.162Z'
+  networkallocation-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/networkallocation-input'
+    example:
+      id: 3
+      uuid: ae2ede5b-a3ea-496e-a024-41fdf9f36394
+      address: 192.168.1.32/23
+      node_id: 3
+      network_id: 1
+      network_range_id: 3
+      tenant_id: 1
+      created_at: '2016-10-25T22:15:28.162Z'
+      updated_at: '2016-10-25T22:15:28.162Z'
+  networkrange-input:
+    type: object
+    properties:
+      network_id:
+        type: integer
+      vlan:
+        type: integer
+      team_mode:
+        type: integer
+      use_team:
+        type: boolean
+      use_vlan:
+        type: boolean
+      use_bridge:
+        type: boolean
+      overlap:
+        type: boolean
+      conduit:
+        type: string
+      first:
+        type: string
+      last:
+        type: string
+      name:
+        type: string
+      tenant_id:
+        type: integer
+      anon_lease_time:
+        type: integer
+      bound_lease_time:
+        type: integer
+      allow_anon_leases:
+        type: boolean
+      allow_bound_leases:
+        type: boolean
+    example:
+      id: 1
+      uuid: c8ec17ee-4ba9-4c94-8fb4-01008c970215
+      network_id: 1
+      vlan: 0
+      team_mode: 5
+      use_team: false
+      use_vlan: false
+      use_bridge: false
+      overlap: false
+      conduit: dhcp
+      first: 'fc45:f789:8ecd:1::1/64'
+      last: 'fc45:f789:8ecd:1:ffff:ffff:ffff:fffe/64'
+      name: host-v6
+      tenant_id: 1
+      anon_lease_time: 60
+      bound_lease_time: 2592000
+      allow_anon_leases: false
+      allow_bound_leases: false
+      created_at: '2016-10-25T22:06:29.706Z'
+      updated_at: '2016-10-25T22:06:29.706Z'
+  networkrange-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/networkrange-input'
+    example:
+      id: 1
+      uuid: c8ec17ee-4ba9-4c94-8fb4-01008c970215
+      network_id: 1
+      vlan: 0
+      team_mode: 5
+      use_team: false
+      use_vlan: false
+      use_bridge: false
+      overlap: false
+      conduit: dhcp
+      first: 'fc45:f789:8ecd:1::1/64'
+      last: 'fc45:f789:8ecd:1:ffff:ffff:ffff:fffe/64'
+      name: host-v6
+      tenant_id: 1
+      anon_lease_time: 60
+      bound_lease_time: 2592000
+      allow_anon_leases: false
+      allow_bound_leases: false
+      created_at: '2016-10-25T22:06:29.706Z'
+      updated_at: '2016-10-25T22:06:29.706Z'
+  networkrouter-input:
+    type: object
+    properties:
+      address:
+        type: string
+      network_id:
+        type: integer
+      tenant_id:
+        type: integer
+      pref:
+        type: integer
+    example:
+      id: 1
+      uuid: 7f034bea-68fc-4ca5-b2b2-c57c6e5f029a
+      address: 192.168.0.2/23
+      network_id: 1
+      tenant_id: 1
+      pref: 10
+      created_at: '2016-10-25T22:06:29.738Z'
+      updated_at: '2016-10-25T22:06:29.738Z'
+  networkrouter-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/networkrouter-input'
+    example:
+      id: 1
+      uuid: 7f034bea-68fc-4ca5-b2b2-c57c6e5f029a
+      address: 192.168.0.2/23
+      network_id: 1
+      tenant_id: 1
+      pref: 10
+      created_at: '2016-10-25T22:06:29.738Z'
+      updated_at: '2016-10-25T22:06:29.738Z'
+  network-input:
+    type: object
+    properties:
+      name:
+        type: string
+      deployment_id:
+        type: integer
+      vlan:
+        type: integer
+      team_mode:
+        type: integer
+      use_team:
+        type: boolean
+      use_vlan:
+        type: boolean
+      use_bridge:
+        type: boolean
+      configure:
+        type: boolean
+      description:
+        type: string
+      v6prefix:
+        type: string
+      conduit:
+        type: string
+      category:
+        type: string
+      group:
+        type: string
+      pbr:
+        type: string
+      tenant_id:
+        type: integer
+    example:
+      id: 1
+      uuid: 17d15fab-7956-44e5-97a6-69f22d63d7e8
+      name: admin-rack
+      deployment_id: 1
+      vlan: 0
+      team_mode: 5
+      use_team: false
+      use_vlan: false
+      use_bridge: false
+      configure: true
+      description: ''
+      v6prefix: 'fc45:f789:8ecd:0001'
+      conduit: dhcp
+      category: admin
+      group: rack
+      pbr: ''
+      tenant_id: 1
+      created_at: '2016-10-25T22:06:29.659Z'
+      updated_at: '2016-10-25T22:06:29.659Z'
+  network-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/network-input'
+    example:
+      id: 1
+      uuid: 17d15fab-7956-44e5-97a6-69f22d63d7e8
+      name: admin-rack
+      deployment_id: 1
+      vlan: 0
+      team_mode: 5
+      use_team: false
+      use_vlan: false
+      use_bridge: false
+      configure: true
+      description: ''
+      v6prefix: 'fc45:f789:8ecd:0001'
+      conduit: dhcp
+      category: admin
+      group: rack
+      pbr: null
+      tenant_id: 1
+      created_at: '2016-10-25T22:06:29.659Z'
+      updated_at: '2016-10-25T22:06:29.659Z'
+  noderole-input:
+    type: object
+    properties:
+      deployment_id:
+        type: integer
+      role_id:
+        type: integer
+      node_id:
+        type: integer
+      state:
+        type: integer
+      status:
+        type: string
+      runlog:
+        type: string
+      available:
+        type: boolean
+      order:
+        type: integer
+      node_error:
+        type: boolean
+      cohort:
+        type: integer
+      run_count:
+        type: integer
+      tenant_id:
+        type: integer
+    example:
+      id: 3
+      uuid: 5e74d17f-176f-4af6-997a-c1cd56f7723d
+      deployment_id: 1
+      role_id: 25
+      node_id: 1
+      state: 0
+      status: ''
+      runlog: ''
+      available: true
+      order: 10000
+      node_error: false
+      cohort: 0
+      run_count: 1
+      tenant_id: 1
+      created_at: '2016-10-25T22:05:38.582Z'
+      updated_at: '2016-10-25T22:05:53.755Z'
+  noderole-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/noderole-input'
+    example:
+      id: 3
+      uuid: 5e74d17f-176f-4af6-997a-c1cd56f7723d
+      deployment_id: 1
+      role_id: 25
+      node_id: 1
+      state: 0
+      status: ''
+      runlog: ''
+      available: true
+      order: 10000
+      node_error: false
+      cohort: 0
+      run_count: 1
+      tenant_id: 1
+      created_at: '2016-10-25T22:05:38.582Z'
+      updated_at: '2016-10-25T22:05:53.755Z'
+  provider-input:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      auth_details:
+        type: object
+      type:
+        type: string
+      tenant_id:
+        type: integer
+    example:
+      id: 1
+      uuid: 9f901155-d535-4c8d-9217-156384cbad1f
+      name: metal
+      description: Provide basic node services for bare-metal nodes.
+      auth_details: {}
+      type: MetalProvider
+      tenant_id: 1
+      created_at: '2016-10-25T22:05:02.302Z'
+      updated_at: '2016-10-25T22:05:02.302Z'
+  provider-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/provider-input'
+    example:
+      id: 1
+      uuid: 9f901155-d535-4c8d-9217-156384cbad1f
+      name: metal
+      description: Provide basic node services for bare-metal nodes.
+      auth_details: {}
+      type: MetalProvider
+      tenant_id: 1
+      created_at: '2016-10-25T22:05:02.302Z'
+      updated_at: '2016-10-25T22:05:02.302Z'
+  tenant-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/tenant-input'
+    example:
+      id: 1
+      uuid: 0e58fce1-ae25-4a43-ae94-f6d36b328614
+      name: system
+      description: Global System Tenant
+      parent_id: 0
+      created_at: '2016-10-25T22:04:07.347Z'
+      updated_at: '2016-10-25T22:04:07.347Z'
+  tenant-input:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      parent_id:
+        type: integer
+    example:
+      id: 1
+      uuid: 0e58fce1-ae25-4a43-ae94-f6d36b328614
+      name: system
+      description: Global System Tenant
+      parent_id: 0
+      created_at: '2016-10-25T22:04:07.347Z'
+      updated_at: '2016-10-25T22:04:07.347Z'
+  usertenantcapability-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/usertenantcapability-input'
+    example:
+      id: 3
+      uuid: 8189551a-f5bb-495a-8cfe-ab49fec8e0cc
+      user_id: 3
+      tenant_id: 1
+      capability_id: 3
+      created_at: '2016-10-25T22:04:48.061Z'
+      updated_at: '2016-10-25T22:04:48.061Z'
+  usertenantcapability-input:
+    type: object
+    properties:
+      user_id:
+        type: integer
+      tenant_id:
+        type: integer
+      capability_id:
+        type: integer
+    example:
+      id: 3
+      uuid: 8189551a-f5bb-495a-8cfe-ab49fec8e0cc
+      user_id: 3
+      tenant_id: 1
+      capability_id: 3
+      created_at: '2016-10-25T22:04:48.061Z'
+      updated_at: '2016-10-25T22:04:48.061Z'
+  user-input:
+    type: object
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      is_admin:
+        type: boolean
+      tenant_id:
+        type: integer
+      current_tenant_id:
+        type: integer
+      locked:
+        type: boolean
+    example:
+      id: 3
+      uuid: fc16ab26-09d8-40c2-beb0-b9349d9728a2
+      username: machine-install
+      email: root@localhost.localdomain
+      is_admin: false
+      tenant_id: 1
+      current_tenant_id: 1
+      locked: false
+      created_at: '2016-10-25T22:04:45.622Z'
+      updated_at: '2016-10-25T22:04:45.691Z'
+  user-output:
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+      - : '#/definitions/user-input'
+    example:
+      id: 3
+      uuid: fc16ab26-09d8-40c2-beb0-b9349d9728a2
+      username: machine-install
+      email: root@localhost.localdomain
+      is_admin: false
+      tenant_id: 1
+      current_tenant_id: 1
+      locked: false
+      created_at: '2016-10-25T22:04:45.622Z'
+      updated_at: '2016-10-25T22:04:45.691Z'

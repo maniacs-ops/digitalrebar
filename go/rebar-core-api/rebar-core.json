@@ -10,12 +10,10 @@
         "https"
     ],
     "consumes": [
-        "application/json",
-        "application/javascript"
+        "application/json"
     ],
     "produces": [
-        "application/json",
-        "application/javascript"
+        "application/json"
     ],
     "securityDefinitions": {
         "Authorization": {
@@ -1121,7 +1119,7 @@
                                 "conduit": "dhcp",
                                 "category": "admin",
                                 "group": "rack",
-                                "pbr": "",
+                                "pbr": null,
                                 "tenant_id": 1,
                                 "created_at": "2016-10-25T22:06:29.659Z",
                                 "updated_at": "2016-10-25T22:06:29.659Z"
@@ -4974,6 +4972,9 @@
                         "type": "string"
                     }
                 },
+                "created_at": {
+                    "type": "string"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -4985,6 +4986,9 @@
                 },
                 "icon": {
                     "type": "string"
+                },
+                "id": {
+                    "type": "integer"
                 },
                 "implicit": {
                     "type": "boolean"
@@ -5033,6 +5037,12 @@
                 },
                 "service": {
                     "type": "boolean"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
                 },
                 "wanted_attribs": {
                     "type": "array",
@@ -5178,7 +5188,7 @@
                 },
                 "build_on": {
                     "type": "string"
-		},
+                },
                 "build_version": {
                     "type": "string"
                 },
@@ -5271,7 +5281,7 @@
             },
             "example": {
                 "barclamp_id": 1,
-                "build_on": null,
+                "build_on": "null",
                 "build_version": "0.0",
                 "cfg_data": {
                     "barclamp": {
@@ -5356,7 +5366,7 @@
                         "layout": 2
                     }
                 },
-                "commit": null,
+                "commit": "null",
                 "created_at": "2016-10-25T22:04:55.457Z",
                 "description": "Core DigitalRebar functionality",
                 "id": 1,
@@ -5536,7 +5546,8 @@
                         "array",
                         "number",
                         "integer",
-                        "boolean"
+                        "boolean",
+                        "null"
                     ],
                     "items": {}
                 },
@@ -5556,7 +5567,7 @@
                 "description": "Information about the root file",
                 "barclamp_id": 2,
                 "role_id": 2,
-                "type": null,
+                "type": "null",
                 "writable": true,
                 "schema": {
                     "mapping": {
@@ -5990,8 +6001,8 @@
                 "dns_name_filter_id": 1,
                 "rr_type": "A",
                 "tenant_id": 1,
-                "created_at": null,
-                "updated_at": null
+                "created_at": "null",
+                "updated_at": "null"
             },
             "x-stoplight": {
                 "id": "dnsnameentries-output",
@@ -6271,9 +6282,9 @@
                 "node_id": 2,
                 "available_hammer_id": 1,
                 "priority": 0,
-                "endpoint": null,
+                "endpoint": "",
                 "username": "root",
-                "authenticator": null,
+                "authenticator": "",
                 "actions": {
                     "power": [
                         "reboot"
@@ -6286,8 +6297,8 @@
                         "run"
                     ]
                 },
-                "created_at": null,
-                "updated_at": null
+                "created_at": "null",
+                "updated_at": "null"
             },
             "x-stoplight": {
                 "id": "hammer-output",
@@ -6783,7 +6794,7 @@
                 "conduit": "dhcp",
                 "category": "admin",
                 "group": "rack",
-                "pbr": null,
+                "pbr": "",
                 "tenant_id": 1,
                 "created_at": "2016-10-25T22:06:29.659Z",
                 "updated_at": "2016-10-25T22:06:29.659Z"
@@ -7246,8 +7257,6 @@
         }
     },
     "x-stoplight": {
-        "beforeScript": "",
-        "afterScript": "",
         "version": {
             "groups": {
                 "docs": [
