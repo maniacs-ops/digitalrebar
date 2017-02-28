@@ -252,7 +252,9 @@ def resolve_conduit(conduit)
   intf_re = /^([-+?]?)(\d{1,3}[mg])(\d+)$/
   finders = conduit.split(',').map{|f|f.strip}
   raise "#{conduit} does not want any interfaces!" if finders.nil? || finders.empty?
+  Chef::Log.info("GREG: finder = #{finders}")
   finders = finders.map{|i|intf_re.match(i)}
+  Chef::Log.info("GREG: finder1 = #{finders}")
   malformed = finders.find_all{|i|i.length != 4}
   raise "Malformed interface selectors: #{malformed}" unless malformed.empty?
   # At this point, the selectors are at least well-formed. Verify that they are sane.
@@ -295,6 +297,7 @@ node["rebar"]["network"]["addresses"].keys.sort{|a,b|
   network = node["rebar"]["network"]["addresses"][addr]
   # Skip BMC conduits.
   next if network["conduit"] == "bmc"
+  next if network["conduit"] == "dhcp"
   # This will wind up being the interfaces that the address will be bound to.
   net_ifs = Array.new
   # This is the basic interfaces that the conduit definition implies we should use.
